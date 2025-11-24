@@ -76,29 +76,6 @@ The design science research methodology is particularly appropriate for this inv
 
 The iterative development approach adopted in this research reflects best practices in software development and tool design. By incorporating multiple feedback cycles during framework development, I ensure that the final tool addresses actual user needs rather than assumed requirements. This approach reduces the risk of developing a tool that, while technically sound, fails to meet the practical needs of IT professionals.
 
-Figure 3.3: Mixed-Methods Research Design
-
-```mermaid
-flowchart TB
-    subgraph Quantitative["Quantitative Methods"]
-        Q1[Scoring System<br/>Validation]
-        Q2[Correlation<br/>Analysis]
-        Q3[Inter-rater<br/>Reliability]
-        Q4[Task Completion<br/>Metrics]
-    end
-
-    subgraph Qualitative["Qualitative Methods"]
-        QL1[Expert<br/>Feedback]
-        QL2[Thematic<br/>Analysis]
-        QL3[Usability<br/>Interviews]
-        QL4[Think-aloud<br/>Protocol]
-    end
-
-    Quantitative --> Integration[Data Integration<br/>& Triangulation]
-    Qualitative --> Integration
-    Integration --> Findings[Comprehensive<br/>Research Findings]
-```
-
 3.5 Sampling Strategy
 
 3.5.1 Contract Sample Selection
@@ -117,7 +94,7 @@ The expert panel for validation purposes consists of 5 legal professionals with 
 
 Additionally, I recruit 15 IT professionals for usability testing of the framework. These participants are selected through professional networks and include IT managers, technology procurement specialists, and systems administrators. The sample includes participants from organizations of varying sizes to ensure the framework's applicability across different organizational contexts.
 
-Figure 3.4: Sampling Strategy Overview
+Figure 3.3: Sampling Strategy Overview
 
 ```mermaid
 flowchart TB
@@ -170,31 +147,27 @@ I conduct clause identification in two passes. The first pass identifies all pot
 
 Inter-coder reliability is established through independent coding of 10 contracts by a second researcher. Cohen's kappa is calculated to measure agreement, with a target threshold of 0.80 indicating substantial agreement. Any disagreements are resolved through discussion and consensus, with coding guidelines refined as necessary.
 
-Figure 3.5: Data Collection and Clause Identification Workflow
+Figure 3.4: Data Collection and Analysis Workflow
 
 ```mermaid
 flowchart TD
-    A[Contract Collection] --> B[Documentation]
-    B --> C[Format Conversion]
-    C --> D[Quality Verification]
-
-    D --> E[First Pass:<br/>Clause Identification]
-    E --> F[Second Pass:<br/>Categorization]
-
-    F --> G{Inter-coder<br/>Reliability}
-    G -->|κ ≥ 0.80| H[Finalize Coding]
-    G -->|κ < 0.80| I[Resolve Disagreements]
-    I --> F
+    A[Contract Collection] --> B[Documentation<br/>& Conversion]
+    B --> C[First Pass:<br/>Clause Identification]
+    C --> D[Second Pass:<br/>Categorization]
+    D --> E{Inter-coder<br/>Reliability κ≥0.80}
+    E -->|Yes| F[Finalize Coding]
+    E -->|No| G[Resolve & Refine]
+    G --> D
 
     subgraph Categories["Five Clause Categories"]
         Cat1[Data Portability]
         Cat2[Pricing Terms]
         Cat3[Support Obligations]
         Cat4[Termination Clauses]
-        Cat5[Service Level Agreements]
+        Cat5[SLAs]
     end
 
-    F --> Categories
+    D --> Categories
 ```
 
 3.6.3 Expert Validation Protocol
@@ -209,26 +182,6 @@ Usability testing follows a think-aloud protocol where participants verbalize th
 
 Each usability testing session follows a standardized script to ensure consistency across participants. Participants complete the same set of tasks, including contract upload, assessment completion, and report interpretation. This standardization enables meaningful comparison across participants while the think-aloud protocol captures individual experiences and challenges.
 
-Figure 3.6: Validation and Testing Protocol
-
-```mermaid
-flowchart LR
-    subgraph Expert["Expert Validation"]
-        E1[Receive Instructions<br/>& Templates] --> E2[Independent<br/>Assessment]
-        E2 --> E3[Risk Rating<br/>Low/Medium/High]
-        E3 --> E4[Written<br/>Justification]
-        E4 --> E5[Compare with<br/>Framework Output]
-        E5 --> E6[Provide<br/>Feedback]
-    end
-
-    subgraph Usability["Usability Testing"]
-        U1[Standardized<br/>Script] --> U2[Think-aloud<br/>Protocol]
-        U2 --> U3[Task<br/>Completion]
-        U3 --> U4[Record Time<br/>& Errors]
-        U4 --> U5[Post-session<br/>Interview]
-    end
-```
-
 3.7 Coding Methodology
 
 The qualitative data from expert feedback and usability testing are analyzed using thematic analysis. I employ an inductive coding approach where codes emerge from the data rather than being imposed from predetermined categories. This approach ensures that the analysis captures participant perspectives rather than confirming researcher expectations.
@@ -239,29 +192,6 @@ To ensure qualitative rigor, I maintain a detailed audit trail documenting all c
 
 Negative case analysis is conducted to identify instances that contradict emerging themes. These negative cases are examined closely to refine theme definitions and ensure that findings accurately represent the full range of participant experiences rather than selectively emphasizing confirmatory data.
 
-Figure 3.7: Thematic Analysis Process
-
-```mermaid
-flowchart TD
-    A[Phase 1:<br/>Data Familiarization] --> B[Phase 2:<br/>Generate Initial Codes]
-    B --> C[Phase 3:<br/>Search for Themes]
-    C --> D[Phase 4:<br/>Review Themes]
-    D --> E[Phase 5:<br/>Define & Name Themes]
-    E --> F[Phase 6:<br/>Produce Report]
-
-    D -->|Refine| C
-
-    subgraph Rigor["Quality Assurance"]
-        R1[Audit Trail]
-        R2[Member Checking]
-        R3[Negative Case Analysis]
-    end
-
-    B --> Rigor
-    C --> Rigor
-    D --> Rigor
-```
-
 3.8 Scoring System Development and Justification
 
 3.8.1 Scoring Framework Design
@@ -270,7 +200,19 @@ The scoring system employs a weighted point allocation approach where each claus
 
 Each of the five clause categories (data portability, pricing terms, support obligations, termination clauses, and service level agreements) is assessed on a scale of 0-20 points, yielding a maximum possible score of 100 points. The point allocation within each category reflects the relative severity of different clause formulations, with higher points indicating greater lock-in risk.
 
-Figure 3.8: Scoring System Structure
+3.8.2 Weight Justification
+
+The equal weighting of clause categories (20 points each) is a deliberate methodological choice that avoids imposing researcher judgments about relative importance. Different organizations may prioritize different risk factors based on their specific circumstances—a healthcare organization may prioritize data portability, while a startup may prioritize pricing flexibility. Equal weighting ensures that the framework does not embed assumptions that may not apply across organizational contexts.
+
+Within each category, point allocations are derived from literature review and expert consultation. I conducted a Delphi process with three legal experts to establish consensus on relative risk severity for different clause formulations. This process involved three rounds of independent assessment and feedback until convergence was achieved. The resulting point allocations reflect expert consensus rather than individual researcher judgment.
+
+3.8.3 Threshold Justification
+
+Risk category thresholds are established at 0-33 points (Low Risk), 34-66 points (Medium Risk), and 67-100 points (High Risk). These thresholds divide the scoring range into equal thirds, providing a balanced distribution that avoids systematic bias toward any particular risk category.
+
+The threshold values are validated through comparison with expert assessments of the validation contract sample. I adjust thresholds iteratively to maximize agreement between framework risk categories and expert classifications. This empirical calibration ensures that the thresholds reflect actual risk distributions rather than arbitrary divisions.
+
+Figure 3.5: Scoring System Structure
 
 ```mermaid
 flowchart TB
@@ -294,39 +236,6 @@ flowchart TB
     Risk -->|67-100| High[HIGH RISK<br/>Significant lock-in]
 ```
 
-3.8.2 Weight Justification
-
-The equal weighting of clause categories (20 points each) is a deliberate methodological choice that avoids imposing researcher judgments about relative importance. Different organizations may prioritize different risk factors based on their specific circumstances—a healthcare organization may prioritize data portability, while a startup may prioritize pricing flexibility. Equal weighting ensures that the framework does not embed assumptions that may not apply across organizational contexts.
-
-Within each category, point allocations are derived from literature review and expert consultation. I conducted a Delphi process with three legal experts to establish consensus on relative risk severity for different clause formulations. This process involved three rounds of independent assessment and feedback until convergence was achieved. The resulting point allocations reflect expert consensus rather than individual researcher judgment.
-
-Figure 3.9: Delphi Process for Weight Calibration
-
-```mermaid
-flowchart LR
-    A[Round 1:<br/>Independent Assessment] --> B[Aggregate<br/>Responses]
-    B --> C[Round 2:<br/>Review & Revise]
-    C --> D[Aggregate<br/>Responses]
-    D --> E[Round 3:<br/>Final Assessment]
-    E --> F{Consensus<br/>Achieved?}
-    F -->|Yes| G[Finalize<br/>Point Allocations]
-    F -->|No| C
-
-    subgraph Experts["Expert Panel"]
-        Ex1[Legal Expert 1]
-        Ex2[Legal Expert 2]
-        Ex3[Legal Expert 3]
-    end
-
-    Experts --> A
-```
-
-3.8.3 Threshold Justification
-
-Risk category thresholds are established at 0-33 points (Low Risk), 34-66 points (Medium Risk), and 67-100 points (High Risk). These thresholds divide the scoring range into equal thirds, providing a balanced distribution that avoids systematic bias toward any particular risk category.
-
-The threshold values are validated through comparison with expert assessments of the validation contract sample. I adjust thresholds iteratively to maximize agreement between framework risk categories and expert classifications. This empirical calibration ensures that the thresholds reflect actual risk distributions rather than arbitrary divisions.
-
 3.9 Technical Design and Development
 
 3.9.1 System Architecture
@@ -339,40 +248,37 @@ The business logic layer implements the scoring algorithms and risk assessment l
 
 The data layer stores contract clause databases, scoring parameters, and user assessment histories. I employ a relational database structure to support efficient querying and reporting. The database schema is designed to accommodate future expansion, including additional clause types and scoring refinements.
 
-Figure 3.10: Three-Tier System Architecture
+Figure 3.6: System Architecture and Core Functionality
 
 ```mermaid
 flowchart TB
-    subgraph Presentation["Presentation Layer"]
-        P1[Web Interface]
-        P2[Responsive Design]
-        P3[User Dashboard]
-        P4[Report Display]
-    end
+    subgraph Architecture["Three-Tier Architecture"]
+        subgraph Presentation["Presentation Layer"]
+            P1[Web Interface]
+            P2[User Dashboard]
+        end
 
-    subgraph Business["Business Logic Layer"]
-        B1[Scoring Engine]
-        B2[NLP Processing]
-        B3[Clause Detection]
-        B4[Report Generation]
-    end
+        subgraph Business["Business Logic Layer"]
+            B1[NLP & Clause Detection]
+            B2[Scoring Engine]
+            B3[Report Generation]
+        end
 
-    subgraph Data["Data Layer"]
-        D1[Contract Database]
-        D2[Clause Patterns]
-        D3[Scoring Parameters]
-        D4[User Histories]
+        subgraph Data["Data Layer"]
+            D1[Contract Database]
+            D2[Clause Patterns]
+            D3[Scoring Parameters]
+        end
     end
 
     User([IT Professional]) --> Presentation
     Presentation <--> Business
     Business <--> Data
 
-    subgraph Tech["Technology Stack"]
-        T1[Python]
-        T2[Flask/Django]
-        T3[PostgreSQL]
-        T4[NLP Libraries]
+    subgraph Flow["Assessment Flow"]
+        F1[Upload Contract] --> F2[Detect Clauses]
+        F2 --> F3[Calculate Score]
+        F3 --> F4[Generate Report]
     end
 ```
 
@@ -386,31 +292,6 @@ Risk scoring applies the validated scoring system to user responses and detected
 
 Report generation produces comprehensive risk assessment reports suitable for organizational decision-making. Reports include overall risk rating, category breakdowns, specific clause concerns, and recommended negotiation strategies. Reports are generated in PDF format for easy distribution and archival.
 
-Figure 3.11: Core Functionality Flow
-
-```mermaid
-flowchart LR
-    A[Contract Upload] --> B[Automated Clause<br/>Detection]
-    B --> C[Guided<br/>Assessment]
-    C --> D[Risk<br/>Scoring]
-    D --> E[Report<br/>Generation]
-
-    B --> B1[NLP Processing]
-    B --> B2[Pattern Matching]
-    B --> B3[Clause Flagging]
-
-    C --> C1[Plain Language<br/>Questions]
-    C --> C2[Examples &<br/>Explanations]
-
-    D --> D1[Category Scores]
-    D --> D2[Overall Rating]
-
-    E --> E1[Risk Summary]
-    E --> E2[Clause Details]
-    E --> E3[Negotiation<br/>Recommendations]
-    E --> E4[PDF Export]
-```
-
 3.9.3 Development Process
 
 The development process follows an agile methodology with two-week sprint cycles. Each sprint produces a functional increment that is tested and refined based on feedback. This iterative approach ensures that development responds to emerging requirements and user feedback rather than rigidly following initial specifications.
@@ -418,37 +299,6 @@ The development process follows an agile methodology with two-week sprint cycles
 I maintain version control using Git, with all code changes documented and traceable. This practice supports collaboration and enables rollback if issues are identified. Comprehensive code documentation ensures that the implementation can be understood and modified by future researchers or developers.
 
 Testing includes unit tests for individual functions, integration tests for component interactions, and user acceptance tests for overall functionality. Test coverage targets a minimum of 80% of code paths to ensure reliability. Identified bugs are logged, prioritized, and addressed in subsequent sprint cycles.
-
-Figure 3.12: Agile Development Process
-
-```mermaid
-flowchart TD
-    subgraph Sprint["Two-Week Sprint Cycle"]
-        S1[Sprint Planning] --> S2[Development]
-        S2 --> S3[Testing]
-        S3 --> S4[Review & Demo]
-        S4 --> S5[Retrospective]
-        S5 --> S1
-    end
-
-    subgraph Testing["Testing Levels"]
-        T1[Unit Tests]
-        T2[Integration Tests]
-        T3[User Acceptance Tests]
-    end
-
-    S3 --> Testing
-
-    subgraph Tools["Development Tools"]
-        Tool1[Git Version Control]
-        Tool2[Issue Tracking]
-        Tool3[CI/CD Pipeline]
-    end
-
-    Sprint --> Increment[Functional<br/>Increment]
-    Increment --> Feedback[User<br/>Feedback]
-    Feedback --> Sprint
-```
 
 3.10 Ethical Considerations
 
@@ -461,34 +311,6 @@ Participant confidentiality is protected through anonymization of all identifyin
 Commercial confidentiality is respected through careful handling of vendor contracts. Publicly available contracts are used wherever possible. Where contracts are obtained through business relationships, I obtain appropriate permissions and anonymize organization-specific details. No proprietary contract terms are disclosed in research outputs without explicit permission.
 
 The research does not involve vulnerable populations, deception, or significant risks to participants. The primary ethical consideration is ensuring that the framework is not misrepresented as a substitute for legal advice. All framework outputs include clear disclaimers indicating that the tool supports but does not replace professional legal counsel for high-stakes contract decisions.
-
-Figure 3.13: Ethical Framework
-
-```mermaid
-flowchart TB
-    subgraph Principles["Ethical Principles"]
-        E1[Informed Consent]
-        E2[Confidentiality]
-        E3[Data Protection]
-        E4[Commercial Privacy]
-        E5[No Deception]
-    end
-
-    subgraph Actions["Implementation"]
-        A1[IRB Approval]
-        A2[Consent Forms]
-        A3[Data Anonymization]
-        A4[Secure Storage]
-        A5[Clear Disclaimers]
-    end
-
-    E1 --> A1
-    E1 --> A2
-    E2 --> A3
-    E3 --> A4
-    E4 --> A3
-    E5 --> A5
-```
 
 3.11 Validity and Reliability
 
@@ -510,33 +332,6 @@ Reliability is established through detailed documentation enabling replication. 
 
 Inter-rater reliability measures provide quantitative evidence of consistency. The target Cohen's kappa of 0.80 for clause coding and the target correlation of 0.80 between framework and expert assessments establish benchmarks for acceptable reliability.
 
-Figure 3.14: Validity and Reliability Framework
-
-```mermaid
-flowchart TB
-    subgraph Internal["Internal Validity"]
-        I1[Systematic<br/>Methodology]
-        I2[Transparent<br/>Documentation]
-        I3[Triangulation]
-    end
-
-    subgraph External["External Validity"]
-        E1[Purposive<br/>Sampling]
-        E2[Major Vendor<br/>Representation]
-        E3[Jurisdictional<br/>Scope]
-    end
-
-    subgraph Reliability["Reliability"]
-        R1[Detailed<br/>Documentation]
-        R2[Inter-rater<br/>Reliability κ≥0.80]
-        R3[Correlation<br/>r≥0.80]
-    end
-
-    Internal --> Quality[Research<br/>Quality]
-    External --> Quality
-    Reliability --> Quality
-```
-
 3.12 Limitations
 
 Several methodological limitations warrant acknowledgment. First, the purposive sampling strategy, while ensuring representation of major vendors, may not capture clause patterns present in contracts from smaller or specialized vendors. Organizations engaging with niche vendors should recognize that the framework may not identify all relevant risks.
@@ -551,70 +346,6 @@ Fifth, the research does not include longitudinal assessment of organizational o
 
 Sixth, the natural language processing capabilities for automated clause detection are limited by current technology. The detection algorithms may miss clauses that use unusual phrasing or may flag clauses that are not actually problematic. Users must review detected clauses rather than relying solely on automated identification.
 
-Figure 3.15: Methodological Limitations
-
-```mermaid
-flowchart TB
-    subgraph Limitations["Key Limitations"]
-        L1[Sampling Scope<br/>Major vendors only]
-        L2[Expert Panel Size<br/>n=5]
-        L3[User Sample<br/>n=15]
-        L4[Point-in-time<br/>Validation]
-        L5[No Longitudinal<br/>Outcomes]
-        L6[NLP Technology<br/>Constraints]
-    end
-
-    subgraph Mitigations["Mitigation Strategies"]
-        M1[Theoretical<br/>Saturation]
-        M2[Established<br/>Practices]
-        M3[Diverse<br/>Organizations]
-        M4[Future Research<br/>Recommendations]
-        M5[User Review<br/>Required]
-    end
-
-    L1 --> M1
-    L2 --> M2
-    L3 --> M3
-    L4 --> M4
-    L5 --> M4
-    L6 --> M5
-```
-
 3.13 Chapter Summary
 
 This chapter has presented the methodological framework for developing and validating the automated vendor contract risk assessment tool. The methodology integrates design science research principles with mixed-methods validation to ensure both practical utility and academic rigor. Purposive sampling of 50 vendor contracts supports clause identification, while a separate validation sample of 10 contracts enables accuracy assessment. Expert panel validation and usability testing provide evidence of framework validity and practical applicability. The scoring system is justified through literature review and expert consensus, with empirically calibrated thresholds. Ethical considerations are addressed through institutional approval and careful data handling. Acknowledged limitations inform appropriate interpretation and application of research findings. The following chapter presents the detailed framework design, including clause typology, scoring rubrics, and negotiation templates.
-
-Figure 3.16: Chapter Summary - Methodology Overview
-
-```mermaid
-flowchart TD
-    subgraph Design["Research Design"]
-        D1[Pragmatist Philosophy]
-        D2[Design Science Research]
-        D3[Mixed Methods]
-    end
-
-    subgraph Sampling["Sampling"]
-        S1[50 Development Contracts]
-        S2[10 Validation Contracts]
-        S3[5 Legal Experts]
-        S4[15 IT Professionals]
-    end
-
-    subgraph Validation["Validation"]
-        V1[Expert Assessment]
-        V2[Usability Testing]
-        V3[Correlation Analysis]
-    end
-
-    subgraph Output["Framework Output"]
-        O1[Clause Typology]
-        O2[Scoring Rubrics]
-        O3[Risk Reports]
-        O4[Negotiation Templates]
-    end
-
-    Design --> Sampling
-    Sampling --> Validation
-    Validation --> Output
-```
